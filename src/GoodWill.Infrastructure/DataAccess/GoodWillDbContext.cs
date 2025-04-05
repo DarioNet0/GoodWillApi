@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GoodWill.Infrastructure.DataAccess
 {
-    internal class GoodWillDbContext : DbContext
+    public class GoodWillDbContext : DbContext
     {
         public GoodWillDbContext(DbContextOptions options) : base(options) { }
 

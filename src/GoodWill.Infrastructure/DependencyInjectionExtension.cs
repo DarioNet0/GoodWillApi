@@ -1,4 +1,6 @@
-﻿using GoodWill.Infrastructure.DataAccess;
+﻿using GoodWill.Domain.Repositories.User;
+using GoodWill.Infrastructure.DataAccess;
+using GoodWill.Infrastructure.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +18,12 @@ namespace GoodWill.Infrastructure
             var connectionString = configuration.GetConnectionString("Connection");
 
             services.AddDbContext<GoodWillDbContext>(config => config.UseSqlServer(connectionString));
+        }
+        public static void AddRepository(IServiceCollection services)
+        {
+            services.AddScoped<IUserReadOnlyRepository, UserRepository>();
+            services.AddScoped<IUserUpdateOnlyRepository, UserRepository>();
+            services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
         }
 
     }
