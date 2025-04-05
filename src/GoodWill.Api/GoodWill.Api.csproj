@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\GoodWill.Application\GoodWill.Application.csproj" />
     <ProjectReference Include="..\GoodWill.Communication\GoodWill.Communication.csproj" />
     <ProjectReference Include="..\GoodWill.Exception\GoodWill.Exception.csproj" />

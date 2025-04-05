@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GoodWill.Communication\GoodWill.Communication.csproj" />
     <ProjectReference Include="..\GoodWill.Domain\GoodWill.Domain.csproj" />
+    <ProjectReference Include="..\GoodWill.Exception\GoodWill.Exception.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
   </ItemGroup>
 
 </Project>
