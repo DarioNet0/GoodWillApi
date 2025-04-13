@@ -24,6 +24,8 @@ namespace GoodWill.Application.UseCases.User.Create
         }
         public Task<ResponseUserJson> Execute(RequestUserJson request)
         {
+
+
             Validate(request);
         }
         private void Validate(RequestUserJson request)

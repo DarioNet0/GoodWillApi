@@ -1,4 +1,5 @@
-﻿using GoodWill.Application.UseCases.User.Create;
+﻿using GoodWill.Application.UseCases.Campaigns.Create;
+using GoodWill.Application.UseCases.User.Create;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GoodWill.Application
@@ -12,6 +13,7 @@ namespace GoodWill.Application
         private static void AddUseCases(IServiceCollection services)
         {
             services.AddScoped<ICreateUserUseCase, CreateUserUseCase>();
+            services.AddScoped<ICreateCampaignUseCase, CreateCampaignUseCase>();
         }
     }
 }

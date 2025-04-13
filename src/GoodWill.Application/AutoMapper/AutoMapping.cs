@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
-using System.Runtime.CompilerServices;
+using GoodWill.Communication.Requests;
+using GoodWill.Communication.Responses;
+using GoodWill.Domain.Entities;
 
 namespace GoodWill.Application.AutoMapper
 {
@@ -12,11 +14,11 @@ namespace GoodWill.Application.AutoMapper
         }
         private void RequestToEntity()
         {
-
+            CreateMap<RequestCreateCampaignJson, Campaign>();
         }
         private void EntityToResponse()
         {
-
+            CreateMap<Campaign, ResponseCreateCampaignJson>();
         }
     }
 }
