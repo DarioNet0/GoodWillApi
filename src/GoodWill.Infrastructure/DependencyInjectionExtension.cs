@@ -1,4 +1,5 @@
-﻿using GoodWill.Domain.Repositories.User;
+﻿using GoodWill.Domain.Repositories.Campaign;
+using GoodWill.Domain.Repositories.User;
 using GoodWill.Infrastructure.DataAccess;
 using GoodWill.Infrastructure.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace GoodWill.Infrastructure
 {
-    public static class DependencyInjectionExtension 
+    public static class DependencyInjectionExtension
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
@@ -24,6 +25,10 @@ namespace GoodWill.Infrastructure
             services.AddScoped<IUserReadOnlyRepository, UserRepository>();
             services.AddScoped<IUserUpdateOnlyRepository, UserRepository>();
             services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
+
+            services.AddScoped<ICampaignReadOnlyRespository, CampaignRepsitory>();
+            services.AddScoped<ICampaignUpdateOnlyRepository, CampaignRepsitory>();
+            services.AddScoped<ICampaignWriteOnlyRepository, CampaignRepsitory>();
         }
 
     }

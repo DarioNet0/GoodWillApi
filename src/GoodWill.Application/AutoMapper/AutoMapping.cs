@@ -15,10 +15,13 @@ namespace GoodWill.Application.AutoMapper
         private void RequestToEntity()
         {
             CreateMap<RequestCreateCampaignJson, Campaign>();
+            CreateMap<RequestListCampaignJson, Campaign>();
         }
         private void EntityToResponse()
         {
             CreateMap<Campaign, ResponseCreateCampaignJson>();
+            CreateMap<RequestListCampaignJson, Campaign>();
+
         }
     }
 }

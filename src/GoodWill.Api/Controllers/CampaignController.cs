@@ -1,4 +1,6 @@
 ﻿using GoodWill.Application.UseCases.Campaigns.Create;
+using GoodWill.Application.UseCases.Campaigns.List;
+using GoodWill.Application.UseCases.Campaigns.ListById;
 using GoodWill.Communication.Requests;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,5 +20,24 @@ namespace GoodWill.Api.Controllers
 
             return Created(string.Empty, response);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll(
+            [FromServices] IListAllCampaignUseCase useCase)
+        {
+            var response = await useCase.Execute();
+            return Ok(response);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetById(
+        [FromRoute] long searchCampaignId,
+        [FromServices] IListByIdCampaignUseCase useCase)
+        {
+            var response = await useCase.Execute(searchCampaignId);
+            return Ok(response);
+        }
     }
+
+
 }
