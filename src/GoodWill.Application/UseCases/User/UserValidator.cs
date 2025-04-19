@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using GoodWill.Application.UseCases.User.Create;
-using GoodWill.Communication.Requests;
+using GoodWill.Communication.Requests.User;
 
 namespace GoodWill.Application.UseCases.User
 {

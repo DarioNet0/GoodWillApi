@@ -1,9 +1,12 @@
 ﻿using GoodWill.Application.UseCases.Campaigns.Create;
+using GoodWill.Application.UseCases.Campaigns.Delete;
 using GoodWill.Application.UseCases.Campaigns.List;
 using GoodWill.Application.UseCases.Campaigns.ListById;
-using GoodWill.Communication.Requests;
-using Microsoft.AspNetCore.Http;
+using GoodWill.Application.UseCases.Campaigns.Update;
+using GoodWill.Communication.Requests.Campaign;
+using GoodWill.Communication.Responses.Campaign;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace GoodWill.Api.Controllers
 {
@@ -12,6 +15,7 @@ namespace GoodWill.Api.Controllers
     public class CampaignController : ControllerBase
     {
         [HttpPost]
+        [ProducesResponseType(typeof(ResponseListCampaignJson), StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(
             [FromBody] RequestCreateCampaignJson request,
             [FromServices] ICreateCampaignUseCase useCase)
@@ -22,6 +26,7 @@ namespace GoodWill.Api.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(typeof(ResponseListCampaignJson), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll(
             [FromServices] IListAllCampaignUseCase useCase)
         {
@@ -30,6 +35,7 @@ namespace GoodWill.Api.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(typeof(ResponseListCampaignJson), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById(
         [FromRoute] long searchCampaignId,
         [FromServices] IListByIdCampaignUseCase useCase)
@@ -37,7 +43,26 @@ namespace GoodWill.Api.Controllers
             var response = await useCase.Execute(searchCampaignId);
             return Ok(response);
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(
+            [FromRoute] long searchCampaignId,
+            [FromServices] IDeleteCampaignUseCase useCase)
+        {
+            await useCase.Execute(searchCampaignId);
+            return NoContent();
+
+        }
+
+        [HttpPut]
+        public IActionResult Edit(
+            [FromRoute] long searchCampaignId,
+            [FromBody] RequestCreateCampaignJson updatedCampaign,
+            [FromServices] IEditCampaignUseCase useCase)
+        {
+            useCase.Execute(searchCampaignId, updatedCampaign);
+            return Ok();
+        }
+
     }
-
-
 }

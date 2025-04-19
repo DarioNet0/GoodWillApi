@@ -1,4 +1,4 @@
-﻿namespace GoodWill.Communication.Responses
+﻿namespace GoodWill.Communication.Responses.User
 {
     public class ResponseUserJson
     {

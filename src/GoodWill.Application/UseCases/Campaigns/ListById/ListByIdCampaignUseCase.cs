@@ -1,24 +1,19 @@
 ﻿using AutoMapper;
-using GoodWill.Communication.Responses;
-using GoodWill.Domain.Repositories.Campaign;
+using GoodWill.Communication.Responses.Campaign;
 using GoodWill.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GoodWill.Domain.Repositories.Campaign;
 
 namespace GoodWill.Application.UseCases.Campaigns.ListById
 {
     public class ListByIdCampaignUseCase : IListByIdCampaignUseCase
     {
 
-        private readonly ICampaignReadOnelyRespository _repository;
+        private readonly ICampaignReadOnlyRespository _repository;
         private readonly IMapper _mapper;
         private readonly IUnityOfWork _unityOfWork;
 
         public ListByIdCampaignUseCase(
-            ICampaignReadOnelyRespository repository,
+            ICampaignReadOnlyRespository repository,
             IMapper mapper,
             IUnityOfWork unityOfWork
             )
@@ -36,6 +31,7 @@ namespace GoodWill.Application.UseCases.Campaigns.ListById
                 ResponseListCampaign = new List<CampaignJson>
         {
             _mapper.Map<CampaignJson>(campaign)
+            }
             };
         }
     }
