@@ -1,14 +1,8 @@
-﻿using GoodWill.Communication.Requests;
-using GoodWill.Communication.Responses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GoodWill.Communication.Responses.Campaign;
 
 namespace GoodWill.Application.UseCases.Campaigns.List
 {
-    public interface IListCampaignUseCase
+    public interface IListAllCampaignUseCase
     {
         Task<ResponseListCampaignJson> Execute();
 

@@ -1,4 +1,4 @@
-﻿namespace GoodWill.Communication.Requests
+﻿namespace GoodWill.Communication.Requests.User
 {
     public class RequestUserJson
     {

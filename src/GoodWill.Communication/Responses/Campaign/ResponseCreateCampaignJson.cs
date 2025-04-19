@@ -1,4 +1,4 @@
-﻿namespace GoodWill.Communication.Responses
+﻿namespace GoodWill.Communication.Responses.Campaign
 {
     public class ResponseCreateCampaignJson
     {

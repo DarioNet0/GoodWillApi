@@ -1,4 +1,6 @@
 ﻿using GoodWill.Application.UseCases.Campaigns.Create;
+using GoodWill.Application.UseCases.Campaigns.Delete;
+using GoodWill.Application.UseCases.Campaigns.Update;
 using GoodWill.Application.UseCases.User.Create;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,6 +16,8 @@ namespace GoodWill.Application
         {
             services.AddScoped<ICreateUserUseCase, CreateUserUseCase>();
             services.AddScoped<ICreateCampaignUseCase, CreateCampaignUseCase>();
+            services.AddScoped<IDeleteCampaignUseCase, DeleteCampaignUseCase>();
+            services.AddScoped<IEditCampaignUseCase, EditCampaignUseCase>();
         }
     }
 }

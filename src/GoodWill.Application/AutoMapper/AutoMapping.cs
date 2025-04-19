@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using GoodWill.Communication.Requests;
-using GoodWill.Communication.Responses;
+using GoodWill.Communication.Requests.Campaign;
+using GoodWill.Communication.Responses.Campaign;
 using GoodWill.Domain.Entities;
 
 namespace GoodWill.Application.AutoMapper
@@ -15,12 +15,12 @@ namespace GoodWill.Application.AutoMapper
         private void RequestToEntity()
         {
             CreateMap<RequestCreateCampaignJson, Campaign>();
-            CreateMap<RequestListCampaignJson, Campaign>();
+            CreateMap<RequestDeleteCampaignJson, Campaign>();
         }
         private void EntityToResponse()
         {
             CreateMap<Campaign, ResponseCreateCampaignJson>();
-            CreateMap<RequestListCampaignJson, Campaign>();
+            CreateMap<Campaign, ResponseListCampaignJson>();
 
         }
     }

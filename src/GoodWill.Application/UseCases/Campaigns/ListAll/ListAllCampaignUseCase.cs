@@ -1,19 +1,18 @@
 ﻿using AutoMapper;
-using GoodWill.Communication.Requests;
-using GoodWill.Communication.Responses;
+using GoodWill.Communication.Responses.Campaign;
 using GoodWill.Domain;
 using GoodWill.Domain.Repositories.Campaign;
 
 namespace GoodWill.Application.UseCases.Campaigns.List
 {
-    internal class ListCampaignUseCase : IListCampaignUseCase
+    internal class ListAllCampaignUseCase : IListAllCampaignUseCase
     {
-        private readonly ICampaignReadOnelyRespository _repository;
+        private readonly ICampaignReadOnlyRespository _repository;
         private readonly IMapper _mapper;
         private readonly IUnityOfWork _unityOfWork;
 
-        public ListCampaignUseCase(
-            ICampaignReadOnelyRespository repository,
+        public ListAllCampaignUseCase(
+            ICampaignReadOnlyRespository repository,
             IMapper mapper,
             IUnityOfWork unityOfWork
             )

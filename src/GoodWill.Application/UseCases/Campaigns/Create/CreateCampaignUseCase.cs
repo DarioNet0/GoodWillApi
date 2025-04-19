@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using GoodWill.Communication.Requests;
-using GoodWill.Communication.Responses;
+using GoodWill.Communication.Requests.Campaign;
+using GoodWill.Communication.Responses.Campaign;
 using GoodWill.Domain;
 using GoodWill.Domain.Entities;
 using GoodWill.Domain.Repositories.Campaign;

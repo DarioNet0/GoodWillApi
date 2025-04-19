@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using GoodWill.Communication.Requests;
-using GoodWill.Communication.Responses;
+using GoodWill.Communication.Requests.User;
+using GoodWill.Communication.Responses.User;
 using GoodWill.Domain;
 using GoodWill.Domain.Repositories.User;
 using GoodWill.Exception.ExceptionBase;
