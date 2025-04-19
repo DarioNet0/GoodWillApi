@@ -6,7 +6,7 @@ using GoodWill.Domain.Repositories.Campaign;
 
 namespace GoodWill.Application.UseCases.Campaigns.List
 {
-    internal class ListCampaignUseCase : IListCampaignUseCase
+    internal class ListCampaignUseCase : IListAllCampaignUseCase
     {
         private readonly ICampaignReadOnelyRespository _repository;
         private readonly IMapper _mapper;

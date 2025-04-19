@@ -61,11 +61,29 @@ namespace GoodWill.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The provided email is already in use.
+        /// </summary>
+        public static string EMAIL_ALREADY_EXISITS {
+            get {
+                return ResourceManager.GetString("EMAIL_ALREADY_EXISITS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided CPF is invalid.
         /// </summary>
         public static string INVALID_CPF {
             get {
                 return ResourceManager.GetString("INVALID_CPF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password or email is invalid.
+        /// </summary>
+        public static string INVALID_LOGIN {
+            get {
+                return ResourceManager.GetString("INVALID_LOGIN", resourceCulture);
             }
         }
         

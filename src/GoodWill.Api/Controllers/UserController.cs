@@ -15,7 +15,9 @@ namespace GoodWill.Api.Controllers
             [FromBody] RequestUserJson request,
             [FromServices] ICreateUserUseCase useCase)
         {
+            var response = await useCase.Execute(request);
 
+            return Created(string.Empty, response); 
         }
     }
 }
