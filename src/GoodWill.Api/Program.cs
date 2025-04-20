@@ -47,6 +47,8 @@ builder.Services.AddSwaggerGen(config =>
 
 builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
 
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 

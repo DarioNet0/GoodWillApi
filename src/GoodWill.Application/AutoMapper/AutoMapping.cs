@@ -18,7 +18,6 @@ namespace GoodWill.Application.AutoMapper
             CreateMap<RequestCreateCampaignJson, Campaign>();
             CreateMap<RequestUserJson, User>()
                 .ForMember(dest => dest.Password, config => config.Ignore());
-            CreateMap<RequestDeleteCampaignJson, Campaign>();
         }
         private void EntityToResponse()
         {

@@ -37,6 +37,7 @@ namespace GoodWill.Api.Controllers
         }
 
         [HttpGet]
+        [Route("{searchCampaignId}")]
         [ProducesResponseType(typeof(ResponseListCampaignJson), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById(
         [FromRoute] long searchCampaignId,
@@ -47,6 +48,7 @@ namespace GoodWill.Api.Controllers
         }
 
         [HttpDelete]
+        [Route("{searchCampaignId}")]
         public async Task<IActionResult> Delete(
             [FromRoute] long searchCampaignId,
             [FromServices] IDeleteCampaignUseCase useCase)
@@ -57,6 +59,7 @@ namespace GoodWill.Api.Controllers
         }
 
         [HttpPut]
+        [Route("{searchCampaignId}")]
         public IActionResult Edit(
             [FromRoute] long searchCampaignId,
             [FromBody] RequestCreateCampaignJson updatedCampaign,

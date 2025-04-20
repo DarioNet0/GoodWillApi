@@ -14,10 +14,7 @@ namespace GoodWill.Api.Filters
             {
                 HandleProjectException(context);
             }
-            else
-            {
-                ThrowUnknownError(context);
-            }
+
         }
         private void HandleProjectException(ExceptionContext context)
         {

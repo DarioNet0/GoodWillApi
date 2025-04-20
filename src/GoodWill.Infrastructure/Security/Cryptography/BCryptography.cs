@@ -3,7 +3,7 @@ using BC = BCrypt.Net.BCrypt;
 
 namespace GoodWill.Infrastructure.Security.Cryptography
 {
-    public class BCrypt : IPasswordEncrypter
+    public class BCryptography : IPasswordEncrypter
     {
         public string Encrypt(string password)
         {

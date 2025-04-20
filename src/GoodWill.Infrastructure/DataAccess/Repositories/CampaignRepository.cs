@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 namespace GoodWill.Infrastructure.DataAccess.Repositories
 {
 
-    internal class CampaignRepsitory : ICampaignReadOnlyRespository, ICampaignUpdateOnlyRepository, ICampaignWriteOnlyRepository
+    internal class CampaignRepository : ICampaignReadOnlyRespository, ICampaignUpdateOnlyRepository, ICampaignWriteOnlyRepository
     {
         private readonly GoodWillDbContext _dbContext;
-        public CampaignRepsitory(GoodWillDbContext dbContext)
+        public CampaignRepository(GoodWillDbContext dbContext)
         {
             _dbContext = dbContext;
         }
