@@ -5,6 +5,7 @@ using GoodWill.Application.UseCases.Campaigns.ListById;
 using GoodWill.Application.UseCases.Campaigns.Update;
 using GoodWill.Communication.Requests.Campaign;
 using GoodWill.Communication.Responses.Campaign;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -12,6 +13,7 @@ namespace GoodWill.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CampaignController : ControllerBase
     {
         [HttpPost]

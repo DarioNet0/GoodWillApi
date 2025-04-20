@@ -1,6 +1,8 @@
 ﻿using GoodWill.Application.UseCases.Login;
 using GoodWill.Communication.Requests;
 using GoodWill.Communication.Responses;
+using GoodWill.Communication.Responses.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GoodWill.Api.Controllers

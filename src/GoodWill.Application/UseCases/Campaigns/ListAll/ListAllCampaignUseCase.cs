@@ -5,17 +5,14 @@ using GoodWill.Domain.Repositories.Campaign;
 
 namespace GoodWill.Application.UseCases.Campaigns.List
 {
-<<<<<<< HEAD
     internal class ListCampaignUseCase : IListAllCampaignUseCase
-=======
-    internal class ListAllCampaignUseCase : IListAllCampaignUseCase
->>>>>>> dfc9f990b3330d0c512c3ff47b3b872303f83538
+
     {
         private readonly ICampaignReadOnlyRespository _repository;
         private readonly IMapper _mapper;
         private readonly IUnityOfWork _unityOfWork;
 
-        public ListAllCampaignUseCase(
+        public ListCampaignUseCase(
             ICampaignReadOnlyRespository repository,
             IMapper mapper,
             IUnityOfWork unityOfWork

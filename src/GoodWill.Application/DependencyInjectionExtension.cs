@@ -18,14 +18,11 @@ namespace GoodWill.Application
         {
             services.AddScoped<ICreateUserUseCase, CreateUserUseCase>();
             services.AddScoped<ICreateCampaignUseCase, CreateCampaignUseCase>();
-<<<<<<< HEAD
             services.AddScoped<IListAllCampaignUseCase, ListCampaignUseCase>();
             services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
             services.AddScoped<IListAllCampaignUseCase, ListCampaignUseCase>();
-=======
             services.AddScoped<IDeleteCampaignUseCase, DeleteCampaignUseCase>();
             services.AddScoped<IEditCampaignUseCase, EditCampaignUseCase>();
->>>>>>> dfc9f990b3330d0c512c3ff47b3b872303f83538
         }
     }
 }

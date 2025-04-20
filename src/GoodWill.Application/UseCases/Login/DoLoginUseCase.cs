@@ -1,5 +1,6 @@
 ﻿using GoodWill.Communication.Requests;
 using GoodWill.Communication.Responses;
+using GoodWill.Communication.Responses.User;
 using GoodWill.Domain.Repositories.User;
 using GoodWill.Domain.Security.Cryptography;
 using GoodWill.Domain.Security.Token;
