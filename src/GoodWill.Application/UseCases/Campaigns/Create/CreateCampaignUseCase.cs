@@ -4,6 +4,7 @@ using GoodWill.Communication.Responses.Campaign;
 using GoodWill.Domain;
 using GoodWill.Domain.Entities;
 using GoodWill.Domain.Repositories.Campaign;
+using GoodWill.Domain.Services.LoggedUsers;
 
 namespace GoodWill.Application.UseCases.Campaigns.Create
 {
@@ -12,24 +13,30 @@ namespace GoodWill.Application.UseCases.Campaigns.Create
         private readonly ICampaignWriteOnlyRepository _repository;
         private readonly IUnityOfWork _unityOfWork;
         private readonly IMapper _mapper;
+        private readonly ILoggedUsers _loggedUsers;
         public CreateCampaignUseCase(
             ICampaignWriteOnlyRepository repository,
             IUnityOfWork unityOfWork,
-            IMapper mapper)
+            IMapper mapper,
+            ILoggedUsers loggedUsers
+            )
         {
             _repository = repository;
             _unityOfWork = unityOfWork; 
             _mapper = mapper;
+            _loggedUsers = loggedUsers;
         }
         public async Task<ResponseCreateCampaignJson> Execute(RequestCreateCampaignJson request)
         {
-            var entity = _mapper.Map<Campaign>(request);
+            var loggedUser = await _loggedUsers.Get();
 
-            await _repository.Add(entity);
+            var campaign = _mapper.Map<Campaign>(request);
+            campaign.UserId = loggedUser.UserId;
 
-            var response = _mapper.Map<ResponseCreateCampaignJson>(entity);
+            await _repository.Add(campaign);
+            await _unityOfWork.Commit();
 
-            return response;
+            return _mapper.Map<ResponseCreateCampaignJson>(campaign);
         }
     }
 }

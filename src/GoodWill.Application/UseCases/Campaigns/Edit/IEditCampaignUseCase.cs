@@ -4,7 +4,7 @@ namespace GoodWill.Application.UseCases.Campaigns.Update
 {
     public interface IEditCampaignUseCase
     {
-        public void Execute(long searchCampaignId, RequestCreateCampaignJson updatedCampaign);
+        public Task Execute(long searchCampaignId, RequestCreateCampaignJson updatedCampaign);
     }
 }
 

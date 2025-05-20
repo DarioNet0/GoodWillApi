@@ -1,32 +1,42 @@
-﻿using AutoMapper;
-using GoodWill.Domain;
+﻿using GoodWill.Domain;
 using GoodWill.Domain.Repositories.Campaign;
+using GoodWill.Domain.Services.LoggedUsers;
+using GoodWill.Exception;
 
 namespace GoodWill.Application.UseCases.Campaigns.Delete
 {
     internal class DeleteCampaignUseCase : IDeleteCampaignUseCase
     {
-        private readonly ICampaignWriteOnlyRepository _repository;
-        private readonly IMapper _mapper;
+        private readonly ICampaignWriteOnlyRepository _repositoryWriteOnly;
+        private readonly ICampaignReadOnlyRespository _repositoryReadOnly;
         private readonly IUnityOfWork _unityOfWork;
+        private readonly ILoggedUsers _loggedUsers;
 
         public DeleteCampaignUseCase(
-            ICampaignWriteOnlyRepository repository,
-            IMapper mapper,
-            IUnityOfWork unityOfWork
+            ICampaignWriteOnlyRepository repositoryWriteOnly,
+            ICampaignReadOnlyRespository repositoryReadOnly,
+            IUnityOfWork unityOfWork,
+            ILoggedUsers loggedUsers
             )
         {
-            _repository = repository;
-            _mapper = mapper;
+            _repositoryWriteOnly = repositoryWriteOnly;
+            _repositoryReadOnly = repositoryReadOnly;
             _unityOfWork = unityOfWork;
+            _loggedUsers = loggedUsers;
         }
         public async Task<bool> Execute(long searchCampaignId)
         {
-            var isDeleted = await _repository.Delete(searchCampaignId);
+            var loggedUser = await _loggedUsers.Get();
+            var campaign = await _repositoryReadOnly.GetById(loggedUser, searchCampaignId);
+            if (campaign is null)
+            {
+                throw new System.Exception("Campaign not found");
+            }
 
+            var isDeleted = await _repositoryWriteOnly.Delete(searchCampaignId);
             await _unityOfWork.Commit();
-
             return isDeleted;
+
         }
     }
 }

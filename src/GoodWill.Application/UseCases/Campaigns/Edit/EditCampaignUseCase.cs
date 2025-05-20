@@ -2,36 +2,46 @@
 using GoodWill.Communication.Requests.Campaign;
 using GoodWill.Domain;
 using GoodWill.Domain.Repositories.Campaign;
+using GoodWill.Domain.Services.LoggedUsers;
 
 namespace GoodWill.Application.UseCases.Campaigns.Update
 {
     public class EditCampaignUseCase : IEditCampaignUseCase
     {
         private readonly ICampaignUpdateOnlyRepository _repositoryUpdate;
-        private readonly ICampaignReadOnlyRespository _repositoryRead;
         private readonly IMapper _mapper;
         private readonly IUnityOfWork _unityOfWork;
+        private readonly ILoggedUsers _loggedUsers;
         public EditCampaignUseCase(
             ICampaignUpdateOnlyRepository repositoryUpdate,
-            ICampaignReadOnlyRespository repositoryRead,
             IMapper mapper,
-            IUnityOfWork unityOfWork
+            IUnityOfWork unityOfWork,
+            ILoggedUsers loggedUsers
+
         )
         {
-            _repositoryRead = repositoryRead;
             _repositoryUpdate = repositoryUpdate;
             _mapper = mapper;
             _unityOfWork = unityOfWork;
+            _loggedUsers = loggedUsers;
         }
 
 
-        public void Execute(long searchCampaignId, RequestCreateCampaignJson updatedCampaign)
+        public async Task Execute(long searchCampaignId, RequestCreateCampaignJson updatedCampaign)
         {
-            var campaign = _repositoryRead.GetByIdNoSync(searchCampaignId);
+            var loggedUser = await _loggedUsers.Get();
+
+            var campaign = await _repositoryUpdate.GetById(loggedUser, searchCampaignId);
+
+            if (campaign is null)
+            {
+                throw new System.Exception("Campaign not found");
+            }
+
             _mapper.Map<RequestCreateCampaignJson>(campaign);
             _repositoryUpdate.Update(campaign!);
 
-            _unityOfWork.Commit();
+            await _unityOfWork.Commit();
         }
     }
 }

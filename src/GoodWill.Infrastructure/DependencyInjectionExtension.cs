@@ -3,10 +3,12 @@ using GoodWill.Domain.Repositories.Campaign;
 using GoodWill.Domain.Repositories.User;
 using GoodWill.Domain.Security.Cryptography;
 using GoodWill.Domain.Security.Token;
+using GoodWill.Domain.Services.LoggedUsers;
 using GoodWill.Infrastructure.DataAccess;
 using GoodWill.Infrastructure.DataAccess.Repositories;
 using GoodWill.Infrastructure.Security.Cryptography;
 using GoodWill.Infrastructure.Security.Token;
+using GoodWill.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +19,8 @@ namespace GoodWill.Infrastructure
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddScoped<ILoggedUsers, LoggedUsers>();
+
             AddDbContext(services, configuration);
             AddRepository(services);
             AddSecurity(services, configuration);

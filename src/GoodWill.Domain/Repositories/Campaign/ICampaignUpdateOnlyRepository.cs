@@ -2,6 +2,7 @@
 {
     public interface ICampaignUpdateOnlyRepository
     {
-        public void Update(Entities.Campaign updatedCampaign);
+        void Update(Entities.Campaign updatedCampaign);
+        Task<Entities.Campaign> GetById(Entities.User user, long id);
     }
 }
