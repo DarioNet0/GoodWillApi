@@ -1,5 +1,7 @@
 using GoodWill.Api.Filters;
+using GoodWill.Api.Token;
 using GoodWill.Application;
+using GoodWill.Domain.Security.Token;
 using GoodWill.Infrastructure;
 using GoodWill.Infrastructure.DataAccess;
 using GoodWill.Infrastructure.Migrations;
@@ -51,6 +53,12 @@ builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)))
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
+
+builder.Services.AddScoped<ITokenProvider, HttpContextTokenValue>();
+
+
+builder.Services.AddHttpContextAccessor();
+
 
 var signInKey = builder.Configuration.GetValue<string>("Settings:Jwt:SignInKey");
 

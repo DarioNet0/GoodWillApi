@@ -30,7 +30,7 @@ namespace GoodWill.Infrastructure
         {
             var connectionString = configuration.GetConnectionString("Connection");
 
-            services.AddDbContext<GoodWillDbContext>(config => config.UseSqlServer(connectionString));
+            services.AddDbContext<GoodWillDbContext>(config => config.UseNpgsql(connectionString));
         }
         public static void AddRepository(IServiceCollection services)
         {
