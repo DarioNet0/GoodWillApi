@@ -3,8 +3,8 @@
     public interface ICampaignReadOnlyRespository
     {
         Task<List<Domain.Entities.Campaign>> GetAll(Entities.User user);
-        Task<Domain.Entities.Campaign> GetById(Entities.User user, long id);
-        Domain.Entities.Campaign? GetByIdNoSync(long searchCampaignId);
+        Task<Domain.Entities.Campaign?> GetById(Entities.User user, long id);
+        Entities.Campaign? GetByIdNoSync(long searchCampaignId);
 
     }
 }

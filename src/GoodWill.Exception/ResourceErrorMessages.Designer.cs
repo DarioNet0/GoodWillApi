@@ -61,6 +61,15 @@ namespace GoodWill.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A Descrição da campanha não pode ser vazia.
+        /// </summary>
+        public static string DESCRIPTION_EMPTY {
+            get {
+                return ResourceManager.GetString("DESCRIPTION_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided email is already in use.
         /// </summary>
         public static string EMAIL_ALREADY_EXISITS {
@@ -93,6 +102,24 @@ namespace GoodWill.Exception {
         public static string INVALID_PASSWORD {
             get {
                 return ResourceManager.GetString("INVALID_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O valor esperado não pode ser menor do que 0.
+        /// </summary>
+        public static string TAGET_VALUE_MUST_BE_GREATER_THAN_ZERO {
+            get {
+                return ResourceManager.GetString("TAGET_VALUE_MUST_BE_GREATER_THAN_ZERO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O Título da Campanha não pode ser Vazio.
+        /// </summary>
+        public static string TITLE_EMPTY {
+            get {
+                return ResourceManager.GetString("TITLE_EMPTY", resourceCulture);
             }
         }
         

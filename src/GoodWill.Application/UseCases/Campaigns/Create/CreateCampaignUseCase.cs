@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using GoodWill.Application.Validators;
 using GoodWill.Communication.Requests.Campaign;
 using GoodWill.Communication.Responses.Campaign;
 using GoodWill.Domain;
 using GoodWill.Domain.Entities;
 using GoodWill.Domain.Repositories.Campaign;
 using GoodWill.Domain.Services.LoggedUsers;
+using GoodWill.Exception.ExceptionBase;
 
 namespace GoodWill.Application.UseCases.Campaigns.Create
 {
@@ -22,12 +24,14 @@ namespace GoodWill.Application.UseCases.Campaigns.Create
             )
         {
             _repository = repository;
-            _unityOfWork = unityOfWork; 
+            _unityOfWork = unityOfWork;
             _mapper = mapper;
             _loggedUsers = loggedUsers;
         }
         public async Task<ResponseCreateCampaignJson> Execute(RequestCreateCampaignJson request)
         {
+            Validate(request);
+
             var loggedUser = await _loggedUsers.Get();
 
             var campaign = _mapper.Map<Campaign>(request);
@@ -37,6 +41,19 @@ namespace GoodWill.Application.UseCases.Campaigns.Create
             await _unityOfWork.Commit();
 
             return _mapper.Map<ResponseCreateCampaignJson>(campaign);
+        }
+        private void Validate(RequestCreateCampaignJson request)
+        {
+            var validator = new CampaignValidator();
+
+            var result = validator.Validate(request);
+
+            if (result.IsValid == false)
+            {
+                var errorMessages = result.Errors.Select(x => x.ErrorMessage).ToList();
+
+                throw new ErrorOnValidationException(errorMessages);
+            }
         }
     }
 }
