@@ -1,7 +1,7 @@
 ﻿using GoodWill.Domain;
 using GoodWill.Domain.Repositories.Campaign;
 using GoodWill.Domain.Services.LoggedUsers;
-using GoodWill.Exception;
+using GoodWill.Exception.ExceptionBase;
 
 namespace GoodWill.Application.UseCases.Campaigns.Delete
 {
@@ -27,10 +27,17 @@ namespace GoodWill.Application.UseCases.Campaigns.Delete
         public async Task<bool> Execute(long searchCampaignId)
         {
             var loggedUser = await _loggedUsers.Get();
+
             var campaign = await _repositoryReadOnly.GetById(loggedUser, searchCampaignId);
+
+            if (campaign?.UserId != loggedUser.UserId)
+            {
+                throw new ForbidException();
+            }
+
             if (campaign is null)
             {
-                throw new System.Exception("Campaign not found");
+                throw new NotFoundException();
             }
 
             var isDeleted = await _repositoryWriteOnly.Delete(searchCampaignId);

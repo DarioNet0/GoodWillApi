@@ -55,7 +55,6 @@ namespace GoodWill.Api.Controllers
         {
             await useCase.Execute(searchCampaignId);
             return NoContent();
-
         }
 
         [HttpPut]

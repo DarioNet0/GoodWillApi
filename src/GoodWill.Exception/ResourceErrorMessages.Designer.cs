@@ -61,6 +61,24 @@ namespace GoodWill.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Acesso Negado.
+        /// </summary>
+        public static string ACCESS_DENIED {
+            get {
+                return ResourceManager.GetString("ACCESS_DENIED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Campanha não encontrada.
+        /// </summary>
+        public static string CAMPAIGN_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("CAMPAIGN_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A Descrição da campanha não pode ser vazia.
         /// </summary>
         public static string DESCRIPTION_EMPTY {
