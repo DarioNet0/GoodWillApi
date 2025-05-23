@@ -28,7 +28,7 @@ namespace GoodWill.Application.UseCases.Campaigns.Delete
         {
             var loggedUser = await _loggedUsers.Get();
 
-            var campaign = await _repositoryReadOnly.GetById(loggedUser, searchCampaignId);
+            var campaign = await _repositoryReadOnly.GetById(searchCampaignId);
 
             if (campaign?.UserId != loggedUser.UserId)
             {

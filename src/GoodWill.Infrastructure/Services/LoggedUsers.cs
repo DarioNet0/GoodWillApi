@@ -32,7 +32,7 @@ namespace GoodWill.Infrastructure.Services
             return await _dbContext
                 .Users
                 .AsNoTracking()
-                .FirstAsync(user => user.UserId == long.Parse(identifier));
+                .FirstOrDefaultAsync(user => user.UserId == long.Parse(identifier));
         }
     }
 }

@@ -18,18 +18,16 @@ namespace GoodWill.Infrastructure.DataAccess.Repositories
             await _dbContext.Campaigns.AddAsync(campaign);
         }
 
-        public async Task<List<Campaign>> GetAll(User user)
+        public async Task<List<Campaign>> GetAll()
         {
-            return await _dbContext.Campaigns
-                .Where(c => c.UserId == user.UserId)
-                .ToListAsync();
+            return await _dbContext.Campaigns.AsNoTracking().ToListAsync();
         }
 
-        public async Task<Campaign?> GetById(User user, long id)
+        public async Task<Campaign?> GetById(long id)
         {
             return await _dbContext.Campaigns
-                .Where(c => c.UserId == user.UserId && c.CampaignId == id)
-                .FirstOrDefaultAsync();
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.CampaignId.Equals(id));
         }
 
         public async Task<bool> Delete(long searchCampaignId)

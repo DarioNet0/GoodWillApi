@@ -2,9 +2,9 @@ using GoodWill.Communication.Responses.Campaign;
 
 namespace GoodWill.Application.UseCases.Campaigns.List
 {
-    public interface IListAllCampaignUseCase
+    public interface IGetAllCampaignUseCase
     {
-        Task<ResponseListCampaignJson> Execute();
+        Task<ResponseGetAllCampaignJson> Execute();
 
     }
 }

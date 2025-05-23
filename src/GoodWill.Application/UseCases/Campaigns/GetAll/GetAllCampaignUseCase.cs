@@ -1,19 +1,17 @@
 ﻿using AutoMapper;
 using GoodWill.Communication.Responses.Campaign;
-using GoodWill.Domain;
 using GoodWill.Domain.Repositories.Campaign;
 using GoodWill.Domain.Services.LoggedUsers;
 
 namespace GoodWill.Application.UseCases.Campaigns.List
 {
-    internal class ListCampaignUseCase : IListAllCampaignUseCase
+    internal class GetAllCampaignUseCase : IGetAllCampaignUseCase
 
     {
         private readonly ICampaignReadOnlyRespository _repositoryReadOnly;
         private readonly IMapper _mapper;
-        private readonly ILoggedUsers _loggedUsers;
 
-        public ListCampaignUseCase(
+        public GetAllCampaignUseCase(
             ICampaignReadOnlyRespository repositoryReadOnly,
             IMapper mapper,
             ILoggedUsers loggedUsers
@@ -21,19 +19,16 @@ namespace GoodWill.Application.UseCases.Campaigns.List
         {
             _repositoryReadOnly = repositoryReadOnly;
             _mapper = mapper;
-            _loggedUsers = loggedUsers;
         }
 
 
-        public async Task<ResponseListCampaignJson> Execute()
+        public async Task<ResponseGetAllCampaignJson> Execute()
         {
-            var loggedUser = await _loggedUsers.Get();
+            var result = await _repositoryReadOnly.GetAll();
 
-            var result = await _repositoryReadOnly.GetAll(loggedUser);
-
-            var response = new ResponseListCampaignJson
+            var response = new ResponseGetAllCampaignJson
             {
-                ResponseListCampaign = _mapper.Map<List<CampaignJson>>(result)
+                Campaigns = _mapper.Map<List<ResponseShortCampaignJson>>(result)
             };
             return response;
         }

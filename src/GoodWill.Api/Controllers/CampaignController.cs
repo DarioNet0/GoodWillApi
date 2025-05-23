@@ -17,7 +17,7 @@ namespace GoodWill.Api.Controllers
     public class CampaignController : ControllerBase
     {
         [HttpPost]
-        [ProducesResponseType(typeof(ResponseListCampaignJson), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ResponseGetAllCampaignJson), StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(
             [FromBody] RequestCreateCampaignJson request,
             [FromServices] ICreateCampaignUseCase useCase)
@@ -28,9 +28,9 @@ namespace GoodWill.Api.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(ResponseListCampaignJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseGetAllCampaignJson), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll(
-            [FromServices] IListAllCampaignUseCase useCase)
+            [FromServices] IGetAllCampaignUseCase useCase)
         {
             var response = await useCase.Execute();
             return Ok(response);
@@ -38,10 +38,10 @@ namespace GoodWill.Api.Controllers
 
         [HttpGet]
         [Route("{searchCampaignId}")]
-        [ProducesResponseType(typeof(ResponseListCampaignJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseGetAllCampaignJson), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById(
         [FromRoute] long searchCampaignId,
-        [FromServices] IListByIdCampaignUseCase useCase)
+        [FromServices] IGetByIdCampaignUseCase useCase)
         {
             var response = await useCase.Execute(searchCampaignId);
             return Ok(response);
@@ -65,7 +65,7 @@ namespace GoodWill.Api.Controllers
             [FromServices] IEditCampaignUseCase useCase)
         {
             useCase.Execute(searchCampaignId, updatedCampaign);
-            return Ok();
+            return NoContent();
         }
 
     }

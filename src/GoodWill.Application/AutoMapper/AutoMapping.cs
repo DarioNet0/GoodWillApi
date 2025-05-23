@@ -23,7 +23,8 @@ namespace GoodWill.Application.AutoMapper
         {
             CreateMap<Campaign, ResponseCreateCampaignJson>();
             CreateMap<RequestUserJson, User>();
-            CreateMap<Campaign, ResponseListCampaignJson>();
+            CreateMap<Campaign, ResponseShortCampaignJson>();
+            CreateMap<Campaign, ResponseGetFullCampaignJson>();
 
         }
     }

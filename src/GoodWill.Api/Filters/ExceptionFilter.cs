@@ -15,6 +15,7 @@ namespace GoodWill.Api.Filters
                 HandleProjectException(context);
             }
 
+
         }
         private void HandleProjectException(ExceptionContext context)
         {

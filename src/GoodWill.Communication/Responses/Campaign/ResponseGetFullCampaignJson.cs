@@ -1,6 +1,6 @@
-﻿namespace GoodWill.Domain.Entities
+﻿namespace GoodWill.Communication.Responses.Campaign
 {
-    public class Campaign
+    public class ResponseGetFullCampaignJson
     {
         public long CampaignId { get; set; }
         public string Title { get; set; } = string.Empty;
@@ -12,8 +12,6 @@
         public bool BoletoPayment { get; set; } = false;
         public bool CreditCardPayment { get; set; } = false;
         public string CoverPhoto { get; set; } = string.Empty;
-
         public long UserId { get; set; }
-        public User User { get; set; } = default!;
     }
 }
