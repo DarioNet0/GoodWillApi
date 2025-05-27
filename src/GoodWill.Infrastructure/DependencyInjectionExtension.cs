@@ -1,5 +1,6 @@
 ﻿using GoodWill.Domain;
 using GoodWill.Domain.Repositories.Campaign;
+using GoodWill.Domain.Repositories.Transfer;
 using GoodWill.Domain.Repositories.User;
 using GoodWill.Domain.Security.Cryptography;
 using GoodWill.Domain.Security.Token;
@@ -41,6 +42,9 @@ namespace GoodWill.Infrastructure
             services.AddScoped<ICampaignReadOnlyRespository, CampaignRepository>();
             services.AddScoped<ICampaignUpdateOnlyRepository, CampaignRepository>();
             services.AddScoped<ICampaignWriteOnlyRepository, CampaignRepository>();
+
+            services.AddScoped<ITransferWriteOnlyRepository, TransferRepository>();
+            services.AddScoped<ITransferReadOnlyRespository, TransferRepository>();
 
             services.AddScoped<IUnityOfWork, UnityOfWork>();
         }

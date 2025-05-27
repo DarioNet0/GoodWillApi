@@ -70,6 +70,15 @@ namespace GoodWill.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O valor da transferência precisa ser maior do que zero.
+        /// </summary>
+        public static string AMOUNT_MUST_BE_GREATER_THAN_ZERO {
+            get {
+                return ResourceManager.GetString("AMOUNT_MUST_BE_GREATER_THAN_ZERO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Campanha não encontrada.
         /// </summary>
         public static string CAMPAIGN_NOT_FOUND {
@@ -120,6 +129,15 @@ namespace GoodWill.Exception {
         public static string INVALID_PASSWORD {
             get {
                 return ResourceManager.GetString("INVALID_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O meio de pagamento não é válido.
+        /// </summary>
+        public static string INVALID_TRANSFER_TYPE {
+            get {
+                return ResourceManager.GetString("INVALID_TRANSFER_TYPE", resourceCulture);
             }
         }
         

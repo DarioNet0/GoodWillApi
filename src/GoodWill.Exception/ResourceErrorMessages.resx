@@ -120,6 +120,9 @@
   <data name="ACCESS_DENIED" xml:space="preserve">
     <value>Acesso Negado</value>
   </data>
+  <data name="AMOUNT_MUST_BE_GREATER_THAN_ZERO" xml:space="preserve">
+    <value>O valor da transferência precisa ser maior do que zero</value>
+  </data>
   <data name="CAMPAIGN_NOT_FOUND" xml:space="preserve">
     <value>Campanha não encontrada</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="TITLE_EMPTY" xml:space="preserve">
     <value>O Título da Campanha não pode ser Vazio</value>
+  </data>
+  <data name="INVALID_TRANSFER_TYPE" xml:space="preserve">
+    <value>O meio de pagamento não é válido</value>
   </data>
   <data name="UNKNOWN_ERROR" xml:space="preserve">
     <value>Unknown errror</value>
