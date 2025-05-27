@@ -2,7 +2,6 @@
 using GoodWill.Communication.Requests.Transfer;
 using GoodWill.Domain.Services.LoggedUsers;
 using GoodWill.Exception.ExceptionBase;
-using System.Runtime.InteropServices;
 
 namespace GoodWill.Application.UseCases.Transfer
 {
