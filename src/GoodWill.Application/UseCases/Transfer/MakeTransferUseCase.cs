@@ -1,5 +1,6 @@
 ﻿using GoodWill.Application.Validators;
 using GoodWill.Communication.Requests.Transfer;
+using GoodWill.Domain.Repositories.Campaign;
 using GoodWill.Domain.Services.LoggedUsers;
 using GoodWill.Exception.ExceptionBase;
 
@@ -7,20 +8,25 @@ namespace GoodWill.Application.UseCases.Transfer
 {
     public class MakeTransferUseCase : IMakeTransferUseCase
     {
+        private readonly ICampaignReadOnlyRespository _campaignReadOnlyRespository;
         private readonly ILoggedUsers _loggedUsers;
         public MakeTransferUseCase(
-            ILoggedUsers loggedUsers)
+            ILoggedUsers loggedUsers,
+            ICampaignReadOnlyRespository campaignReadOnlyRespository)
         {
             _loggedUsers = loggedUsers;
+            _campaignReadOnlyRespository = campaignReadOnlyRespository;
         }
-        public Task Execute(RequestMakeTransferJson request)
+        public async Task Execute(RequestMakeTransferJson request)
         {
-            Validate(request);
+            ValidateRequest(request);
+
+            await ValidateCampaing(request.CampaignId);
 
 
-            throw new NotImplementedException();
+
         }
-        private void Validate(RequestMakeTransferJson request)
+        private void ValidateRequest(RequestMakeTransferJson request)
         {
             var validator = new TransferValidator();
 
@@ -32,8 +38,15 @@ namespace GoodWill.Application.UseCases.Transfer
 
                 throw new ErrorOnValidationException(errorsMessages);
             }
+        }
+        private async Task ValidateCampaing(long campaignId)
+        {
+            var campaign = await _campaignReadOnlyRespository.GetById(campaignId);
 
-
+            if (campaign is null)
+            {
+                throw new NotFoundException();
+            }
         }
     }
 }

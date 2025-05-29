@@ -2,5 +2,6 @@
 {
     public interface ITransferWriteOnlyRepository
     {
+        Task UpdateBalance(long campaignId, decimal Amoun);
     }
 }
