@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GoodWill.Application.Validators;
 using GoodWill.Communication.Requests.User;
 using GoodWill.Communication.Responses.User;
 using GoodWill.Domain;
@@ -32,7 +33,7 @@ namespace GoodWill.Application.UseCases.User.Create
             _userWriteOnlyRepository = userWriteOnlyRepository;
             _userReadOnlyRepository = userReadOnlyRepository;
             _passwordEncrypter = passwordEncrypter;
-            _tokenGenerator = tokenGenerator;   
+            _tokenGenerator = tokenGenerator;
         }
         public async Task<ResponseUserJson> Execute(RequestUserJson request)
         {
