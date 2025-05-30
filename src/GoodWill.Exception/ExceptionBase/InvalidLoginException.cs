@@ -9,11 +9,11 @@ namespace GoodWill.Exception.ExceptionBase
 
         public override List<string> GetErrors()
         {
-            return[Message];
+            return new List<string> { Message };
         }
         public InvalidLoginException() : base(ResourceErrorMessages.INVALID_LOGIN)
         {
-            
+
         }
     }
 }

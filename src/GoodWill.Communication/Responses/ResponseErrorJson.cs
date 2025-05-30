@@ -6,9 +6,8 @@
 
         public ResponseErrorJson(string errorMessage)
         {
-            ErrorMessages = [errorMessage];
+            ErrorMessages = new List<string> { errorMessage };
         }
-
         public ResponseErrorJson(List<string> errorMessage)
         {
             ErrorMessages = errorMessage;
