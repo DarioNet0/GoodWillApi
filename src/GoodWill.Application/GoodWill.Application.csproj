@@ -10,11 +10,12 @@
 		<ProjectReference Include="..\GoodWill.Communication\GoodWill.Communication.csproj" />
 		<ProjectReference Include="..\GoodWill.Domain\GoodWill.Domain.csproj" />
 		<ProjectReference Include="..\GoodWill.Exception\GoodWill.Exception.csproj" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="12.0.1" />
-		
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
 		<PackageReference Include="FluentValidation" Version="11.11.0" />
 	</ItemGroup>
 
