@@ -3,7 +3,6 @@ using GoodWill.Api.Token;
 using GoodWill.Application;
 using GoodWill.Domain.Security.Token;
 using GoodWill.Infrastructure;
-using GoodWill.Infrastructure.DataAccess;
 using GoodWill.Infrastructure.Migrations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -78,6 +77,10 @@ builder.Services.AddAuthentication(config =>
 });
 
 var app = builder.Build();
+
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+
+app.Urls.Add($"http://*:{port}");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
