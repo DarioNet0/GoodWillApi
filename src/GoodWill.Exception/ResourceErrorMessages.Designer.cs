@@ -97,7 +97,7 @@ namespace GoodWill.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The provided email is already in use.
+        ///   Looks up a localized string similar to O email fornecido já está em uso.
         /// </summary>
         public static string EMAIL_ALREADY_EXISITS {
             get {
@@ -106,7 +106,34 @@ namespace GoodWill.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The provided CPF is invalid.
+        ///   Looks up a localized string similar to A data de nascimento não pode ser vazia.
+        /// </summary>
+        public static string EMPTY_BIRTHDATE {
+            get {
+                return ResourceManager.GetString("EMPTY_BIRTHDATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O E-mail não pode ser vazio.
+        /// </summary>
+        public static string EMPTY_EMAIL {
+            get {
+                return ResourceManager.GetString("EMPTY_EMAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A data de nascimento não pode ser uma data futura.
+        /// </summary>
+        public static string FUTURE_BIRTH_DATE {
+            get {
+                return ResourceManager.GetString("FUTURE_BIRTH_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O CPF informado é inválido.
         /// </summary>
         public static string INVALID_CPF {
             get {
@@ -115,7 +142,16 @@ namespace GoodWill.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The password or email is invalid.
+        ///   Looks up a localized string similar to O Email informado é inválido.
+        /// </summary>
+        public static string INVALID_EMAIL {
+            get {
+                return ResourceManager.GetString("INVALID_EMAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O email ou senha estão incorretos.
         /// </summary>
         public static string INVALID_LOGIN {
             get {
@@ -124,7 +160,16 @@ namespace GoodWill.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The provided password does not satisfy one or more of our Password rules.
+        ///   Looks up a localized string similar to O nome não pode ser vazio.
+        /// </summary>
+        public static string INVALID_NAME {
+            get {
+                return ResourceManager.GetString("INVALID_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A senha fornecida não segue os padrões esperados.
         /// </summary>
         public static string INVALID_PASSWORD {
             get {
@@ -169,7 +214,7 @@ namespace GoodWill.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unknown errror.
+        ///   Looks up a localized string similar to Erro desconhecido.
         /// </summary>
         public static string UNKNOWN_ERROR {
             get {

@@ -130,16 +130,16 @@
     <value>A Descrição da campanha não pode ser vazia</value>
   </data>
   <data name="EMAIL_ALREADY_EXISITS" xml:space="preserve">
-    <value>The provided email is already in use</value>
+    <value>O email fornecido já está em uso</value>
   </data>
   <data name="INVALID_CPF" xml:space="preserve">
-    <value>The provided CPF is invalid</value>
+    <value>O CPF informado é inválido</value>
   </data>
   <data name="INVALID_LOGIN" xml:space="preserve">
-    <value>The password or email is invalid</value>
+    <value>O email ou senha estão incorretos</value>
   </data>
   <data name="INVALID_PASSWORD" xml:space="preserve">
-    <value>The provided password does not satisfy one or more of our Password rules</value>
+    <value>A senha fornecida não segue os padrões esperados</value>
   </data>
   <data name="TAGET_VALUE_MUST_BE_GREATER_THAN_ZERO" xml:space="preserve">
     <value>O valor esperado não pode ser menor do que 0</value>
@@ -151,9 +151,24 @@
     <value>O meio de pagamento não é válido</value>
   </data>
   <data name="UNKNOWN_ERROR" xml:space="preserve">
-    <value>Unknown errror</value>
+    <value>Erro desconhecido</value>
   </data>
   <data name="TRANSFER_ERROR" xml:space="preserve">
     <value>Não foi possível concluir a transação</value>
+  </data>
+  <data name="INVALID_NAME" xml:space="preserve">
+    <value>O nome não pode ser vazio</value>
+  </data>
+  <data name="INVALID_EMAIL" xml:space="preserve">
+    <value>O Email informado é inválido</value>
+  </data>
+  <data name="EMPTY_EMAIL" xml:space="preserve">
+    <value>O E-mail não pode ser vazio</value>
+  </data>
+  <data name="EMPTY_BIRTHDATE" xml:space="preserve">
+    <value>A data de nascimento não pode ser vazia</value>
+  </data>
+  <data name="FUTURE_BIRTH_DATE" xml:space="preserve">
+    <value>A data de nascimento não pode ser uma data futura</value>
   </data>
 </root>
