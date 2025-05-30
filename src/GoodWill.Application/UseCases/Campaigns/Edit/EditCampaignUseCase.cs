@@ -17,6 +17,7 @@ namespace GoodWill.Application.UseCases.Campaigns.Update
         private readonly ILoggedUsers _loggedUsers;
         public EditCampaignUseCase(
             ICampaignUpdateOnlyRepository repositoryUpdate,
+            ICampaignReadOnlyRespository readOnlyRespository,
             IMapper mapper,
             IUnityOfWork unityOfWork,
             ILoggedUsers loggedUsers
@@ -27,6 +28,7 @@ namespace GoodWill.Application.UseCases.Campaigns.Update
             _mapper = mapper;
             _unityOfWork = unityOfWork;
             _loggedUsers = loggedUsers;
+            _readRepository = readOnlyRespository;
         }
 
 

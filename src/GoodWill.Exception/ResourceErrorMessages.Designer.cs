@@ -160,6 +160,15 @@ namespace GoodWill.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Não foi possível concluir a transação.
+        /// </summary>
+        public static string TRANSFER_ERROR {
+            get {
+                return ResourceManager.GetString("TRANSFER_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknown errror.
         /// </summary>
         public static string UNKNOWN_ERROR {

@@ -27,6 +27,16 @@ namespace GoodWill.Infrastructure.Services
 
             var jwtSecurityToken = tokenHandler.ReadJwtToken(token);
 
+            var sidClaim = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Sid)?.Value;
+
+            Console.WriteLine($"Claim sid value: {sidClaim}");
+
+            if (string.IsNullOrEmpty(sidClaim))
+                throw new Exception("Claim sid não encontrado no token.");
+
+            if (!long.TryParse(sidClaim, out long userId))
+                throw new Exception($"Claim sid '{sidClaim}' não é um número válido.");
+
             var identifier = jwtSecurityToken.Claims.First(claim => claim.Type == ClaimTypes.Sid).Value;
 
             return await _dbContext

@@ -1,4 +1,5 @@
-﻿using GoodWill.Domain.Repositories.Transfer;
+﻿using GoodWill.Domain.Entities;
+using GoodWill.Domain.Repositories.Transfer;
 using Microsoft.EntityFrameworkCore;
 
 namespace GoodWill.Infrastructure.DataAccess.Repositories
@@ -10,10 +11,25 @@ namespace GoodWill.Infrastructure.DataAccess.Repositories
         {
             _dbContext = dbContext;
         }
-        public Task UpdateBalance(long campaignId)
+
+        public async Task InsertTransferHistory(Transfer transfer)
         {
-            _dbContext.Database.ExecuteSqlRaw(
-                "");
+            await _dbContext
+                .Transfers
+                .AddAsync(transfer);
+        }
+
+        public async Task UpdateBalance(long campaignId, decimal amount)
+        {
+            using var transaction = await _dbContext.Database.BeginTransactionAsync();
+
+            await _dbContext
+                .Database
+                .ExecuteSqlRawAsync(
+                "CALL SpAtualizaSaldo({0}, {1})",
+                campaignId, amount);
+
+            await transaction.CommitAsync();
         }
     }
 }

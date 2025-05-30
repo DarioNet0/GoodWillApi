@@ -153,4 +153,7 @@
   <data name="UNKNOWN_ERROR" xml:space="preserve">
     <value>Unknown errror</value>
   </data>
+  <data name="TRANSFER_ERROR" xml:space="preserve">
+    <value>Não foi possível concluir a transação</value>
+  </data>
 </root>
