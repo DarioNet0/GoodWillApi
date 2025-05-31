@@ -1,0 +1,1 @@
+web: dotnet GoodWill.Api.dll

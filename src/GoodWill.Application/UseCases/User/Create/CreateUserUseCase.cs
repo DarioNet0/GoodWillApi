@@ -8,7 +8,6 @@ using GoodWill.Domain.Security.Cryptography;
 using GoodWill.Domain.Security.Token;
 using GoodWill.Exception;
 using GoodWill.Exception.ExceptionBase;
-using System.Runtime.CompilerServices;
 
 namespace GoodWill.Application.UseCases.User.Create
 {

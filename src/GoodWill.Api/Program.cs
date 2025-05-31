@@ -76,11 +76,23 @@ builder.Services.AddAuthentication(config =>
     };
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy => policy
+            .AllowAnyOrigin() // ou .WithOrigins("http://localhost:3000") para restringir
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
+
 var app = builder.Build();
 
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 
 app.Urls.Add($"http://*:{port}");
+
+app.UseCors("AllowAll");
 
 app.UseSwagger();
 app.UseSwaggerUI();
