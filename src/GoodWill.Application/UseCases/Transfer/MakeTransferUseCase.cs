@@ -45,10 +45,13 @@ namespace GoodWill.Application.UseCases.Transfer
                     await HandlePixTransfer(request.CampaignId, request.Amount);
                     break;
                 case TransferTypes.CreditCard:
+                    await HandleCreditCardTransfer(_mapper.Map<RequestCreditCardTransferJson>(request));
                     break;
                 case TransferTypes.Boleto:
+                    await HandleBoletoTransfer(_mapper.Map<RequestBoletoTransferJson>(request));
                     break;
                 case TransferTypes.Ad:
+                    await HandleAdsTransfer(_mapper.Map<RequestAdsTransferJson>(request), user.UserId);
                     break;
             }
 
@@ -90,11 +93,72 @@ namespace GoodWill.Application.UseCases.Transfer
                 throw new ForbidException();
             }
         }
+
         private async Task HandlePixTransfer(long campaignId, decimal Amount)
         {
             try
             {
                 await _transferWriteOnlyRepository.UpdateBalance(campaignId, Amount);
+            }
+            catch
+            {
+                throw new ErrorOnTransferException();
+            }
+        }
+
+        private async Task HandleCreditCardTransfer(RequestCreditCardTransferJson request)
+        {
+            try
+            {
+                var validator = new CreditCardValidator();
+                var result = validator.Validate(request);
+
+                if (!result.IsValid)
+                {
+                    var errorsMessages = result.Errors.Select(error => error.ErrorMessage).ToList();
+                    throw new ErrorOnValidationException(errorsMessages);
+                }
+
+                await _transferWriteOnlyRepository.UpdateBalance(request.CampaignId, request.Amount);
+            }
+            catch
+            {
+                throw new ErrorOnTransferException();
+            }
+        }
+
+        private async Task HandleBoletoTransfer(RequestBoletoTransferJson request)
+        {
+            try
+            {
+                var validator = new BoletoValidator();
+                var result = validator.Validate(request);
+
+                if (!result.IsValid)
+                {
+                    var errorsMessages = result.Errors.Select(error => error.ErrorMessage).ToList();
+                    throw new ErrorOnValidationException(errorsMessages);
+                }
+
+                await _transferWriteOnlyRepository.UpdateBalance(request.CampaignId, request.Amount);
+            }
+            catch (ErrorOnValidationException)
+            {
+                throw;
+            }
+            catch
+            {
+                throw new ErrorOnTransferException();
+            }
+        }
+
+        private async Task HandleAdsTransfer(RequestAdsTransferJson request, long userId)
+        {
+            try
+            {
+                decimal amountToTransfer = request.AdsWatched * request.AdPrice;
+
+                await _transferWriteOnlyRepository.UpdateBalance(request.CampaignId, amountToTransfer);
             }
             catch
             {
